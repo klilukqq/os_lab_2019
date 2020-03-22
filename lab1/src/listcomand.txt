@@ -1,0 +1,18 @@
+./background.sh > lab1num1.txt
+clear
+cat lab1num1.txt| wc -m
+67
+
+
+cat cake_rhymes.txt | grep -i "cake" > with_cake.txt
+
+ rm test.txt > /dev/null
+
+chmod u+x ./hello.sh
+./hello.sh
+
+od numbers.sh > numbers.txt
+
+cat numbers.txt | ./average.sh
+14791
+79
