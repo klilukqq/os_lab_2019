@@ -1,8 +1,9 @@
 #!/bin/bash
 
+
 count=0
 sm=0
-for i in $(cat $1)
+for i in $(cat ./numbers.txt)
 do 
     (( count += 1 ))
     (( sm += i))
