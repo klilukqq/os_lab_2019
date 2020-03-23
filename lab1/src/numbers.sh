@@ -4,9 +4,9 @@
 
 MAX=150
 i=1
-while [ "$i" -le $MAX ]
+for (( ; i<= 150;i ++))
 do
-    number=$RANDOM
-    echo $number >> numbers.txt
-    let "i += 1"
+    number= $numbers"/dev/random"
 done
+
+echo $number >> numbers.txt
