@@ -1,0 +1,6 @@
+1
+cc main.c swap.c swap.h -o Swap
+2
+gcc main.c revert_string.c -std=c99 -o Revert_string
+./Revert_string asdasd
+3
