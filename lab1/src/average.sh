@@ -3,7 +3,7 @@
 
 count=0
 sm=0
-for i in $(cat ./numbers.txt)
+for i in $()
 do 
     (( count += 1 ))
     (( sm += i))

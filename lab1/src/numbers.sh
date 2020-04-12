@@ -6,7 +6,6 @@ MAX=150
 i=1
 for (( ; i<= 150;i ++))
 do
-    number= $numbers"/dev/random"
+    (od -A n -t d -N 1 /dev/random) 
 done
 
-echo $number >> numbers.txt
