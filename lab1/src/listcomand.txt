@@ -11,8 +11,11 @@ cat cake_rhymes.txt | grep -i "cake" > with_cake.txt
 chmod u+x ./hello.sh
 ./hello.sh
 
-od numbers.sh > numbers.txt
+chmod 755 ./numbers.sh 
+./numbers.sh 
 
-cat numbers.txt | ./average.sh
-14791
-79
+chmod 755 ./average.sh
+./average.sh
+
+Среднее значение= 116
+Число элементов= 150

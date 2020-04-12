@@ -1,14 +1,19 @@
 #!/bin/bash
 
+exec 0<numbers
 
+average=0
 count=0
-sm=0
-for i in $()
-do 
-    (( count += 1 ))
-    (( sm += i))
+
+while read number
+do
+
+average=$(($average+$number))
+count=$(($count+1))
+
 done
 
-let "sm = sm/count"
-echo $sm
-echo $count
+average=$(($average/$count))
+
+echo "Среднее значение= $average" 
+echo "Число элементов= $count"
