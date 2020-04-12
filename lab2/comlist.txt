@@ -4,3 +4,13 @@ cc main.c swap.c swap.h -o Swap
 gcc main.c revert_string.c -std=c99 -o Revert_string
 ./Revert_string asdasd
 3
+gcc -c ./main.c -o ./bin/main.o
+gcc -c ./revert_string.c -std=c99 -o ./bin/static/revert_string.o
+gcc -c -fPIC ./revert_string.c -std=c99 -o ./bin/shared/revert_string.o
+ar rcs ./bin/static/librevstr.a bin/static/revert_string.o
+gcc   bin/main.o  -Lbin/static -lrevstr -o ./statically-linked-revers_string
+./statically-linked-revers_string qwerty
+
+gcc -shared bin/shared/revert_string.o -o bin/shared/librevstr.so
+gcc bin/main.o  -Lbin/shared -lrevstr -o ./use-shared-library-revers_string
+./statically-linked-revers_string zxcvbn
