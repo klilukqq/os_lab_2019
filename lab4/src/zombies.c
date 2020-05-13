@@ -1,21 +1,17 @@
-#include "stdio.h"
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/types.h>
+#include <unistd.h>
 
-int main()
-{
-    int i = 0;
-    for(; i < 5; i++){
-        pid_t child_pid = fork();
-        if(child_pid >= 0)
-            {
-            if (child_pid == 0)
-                {
-                    return 0;
-                }
-            }
-    }
-    sleep(60);
-    return 0;
+int main() {
+ pid_t child_pid;
+ /* Создание дочернего процесса. */
+ child_pid = fork();
+ if (child_pid > 0) {
+  /* Это родительский процесс — делаем минутную паузу. */
+  sleep(60);
+ } else {
+  /* Это дочерний процесс — немедленно завершаем работу. */
+  exit(0);
+ }
+ return 0;
 }
