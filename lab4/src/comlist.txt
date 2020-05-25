@@ -13,3 +13,7 @@ make process_memory
 make 
 make clean
 
+export LD_LIBRARY_PATH=/projects/os_lab_2019/lab4/src/:${LD_LIBRARY_PATH}
+make -f makefile_sum
+./sum  --seed 3 --array_size 16 --threads_num 4
+make -f makefile_sum clean
