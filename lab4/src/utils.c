@@ -16,7 +16,7 @@ void GenerateArray(int *array, unsigned int array_size, unsigned int seed) {
   }
 }
 
-void WakeUpAndKillYourChildren(int signo)
+void KillYourChildren(int signo)
 {
     int a = 0;
     pid_t b;

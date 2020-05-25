@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
   int left = array_size%threads_num;
   struct SumArgs args[threads_num];
   for(uint32_t i = 0; i < threads_num; i++)
-  {
+  {// установка ограничений
       args[i].array = array;
       args[i].begin = ars*i + (left < i ? left : i);
       args[i].end = ars*(i+1) + (left < i+1 ? left : i+1);
@@ -124,7 +124,7 @@ int main(int argc, char **argv) {
     int sum = 0;
     pthread_join(threads[i], (void **)&sum);
     total_sum += (int)sum;
-  }
+  }//подсчет суммы
   struct timeval finish_time;
   gettimeofday(&finish_time, NULL);
 

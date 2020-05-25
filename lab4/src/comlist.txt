@@ -1,0 +1,15 @@
+make parallel_min_max 
+./parallel_min_max --seed 12 --array_size 20 --pnum 4 --timeout 1 
+./parallel_min_max --seed 12 --array_size 20 --pnum 4 --timeout 10
+make clean
+
+gcc zombies.c -o zombies 
+./zombies
+ps u
+
+make process_memory
+./process_memory
+
+make 
+make clean
+

@@ -177,7 +177,7 @@ int main(int argc, char **argv) {
     }
   }
   if(tmt > 0) {
-    signal(SIGALRM, WakeUpAndKillYourChildren);
+    signal(SIGALRM, KillYourChildren);
     alarm(tmt);
   }
   while (active_child_processes > 0) {
