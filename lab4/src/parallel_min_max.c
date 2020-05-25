@@ -181,9 +181,10 @@ int main(int argc, char **argv) {
     alarm(tmt);
   }
   while (active_child_processes > 0) {
-    int st = 0;
-    wait(&st);
-    active_child_processes -= 1;
+    //wait(&st);
+    //waitpid(0, &st, WNOHANG);
+    while ((temp = waitpid(-1, &st, WNOHANG)) > 0)
+        active_child_processes -= 1;
   }
   if(tmt > 0)
   {
