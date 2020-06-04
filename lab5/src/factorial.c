@@ -4,6 +4,7 @@
 #include <getopt.h>
 #include <stdbool.h>
 #include <sys/types.h>
+#include <semaphore.h>
 
 struct FactArgs {
     int begin;
@@ -12,10 +13,12 @@ struct FactArgs {
 
 int factor = 1;
 int modd = 0;
-pthread_mutex_t mutx = PTHREAD_MUTEX_INITIALIZER;
+//pthread_mutex_t mutx = PTHREAD_MUTEX_INITIALIZER;
+sem_t semaphore;
 
 void CountPart(void *args) {
-    pthread_mutex_lock(&mutx);
+    //pthread_mutex_lock(&mutx);
+    sem_wait(&semaphore);
     struct FactArgs *arrs = (struct FactArgs *)args;
     int num = 1;
     for(int i = arrs->begin; i < arrs->end; i++)
@@ -23,7 +26,8 @@ void CountPart(void *args) {
         num = num%modd * i%modd;
     }
     factor = factor % modd * num % modd;
-    pthread_mutex_unlock(&mutx);
+    //pthread_mutex_unlock(&mutx);
+    sem_post(&semaphore);
 }
 
 
@@ -31,6 +35,8 @@ int main(int argc, char **argv)
 {
     int k = 0;
     int pnum = 0;
+
+    sem_init(&semaphore, 0, 1);//semaphore
 
     int opt = getopt(argc,argv, "k:");
     if (opt != 'k')
@@ -136,6 +142,8 @@ int main(int argc, char **argv)
   {
       pthread_join(threads[i], NULL);
   }
+
+sem_destroy(&semaphore);// delete
 
   factor %= modd;
   printf("Factorial %d by mod %d = %d\n", k, modd, factor);
