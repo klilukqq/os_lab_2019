@@ -1,4 +1,6 @@
-all: tcp udp
+CFLAGS=-I. -std=c11 -pthread
+
+all: tcp udp server client
 
 tcp: tcpclient tcpserver
 
@@ -16,5 +18,11 @@ udpserver: udpserver.c
 udpclient: udpclient.c
 	gcc udpclient.c -o udpclient.o
 
+server: server.c
+	gcc -o server server.c $(CFLAGS)
+
+client: client.c
+	gcc -o client client.c $(CFLAGS)
+
 clean:
-	rm *.o	
+	rm *.o	client server
